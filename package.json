@@ -1,0 +1,18 @@
+{
+	"name": "CI_Config",
+	"description": "For universal control over our wordpress ci configurations",
+	"version": "0.0.3",
+	"homepage": "https://github.com/Postmedia-Digital/CI_Config",
+	"author": "Keith Benedict <kbenedict@postmedia.com>",
+	"contributors": [
+		{ "name": "Integration Team", "email": "pdtechintegration@postmedia.com" }
+	],
+	"dependencies": {
+		"eslint": "~0.17.1",
+		"csslint": "~0.10.0"
+	},
+	"bugs": { "url": "https://github.com/Postmedia/pantry/issues"},
+	"keywords": ["config","lint","js","css"],
+	"repository": "git://github.com/Postmedia-Digital/CI_Config",
+	"engines": { "node": ">=0.8.0 <0.11", "npm": "1.x" }
+}
