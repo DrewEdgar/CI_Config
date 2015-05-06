@@ -1,10 +1,25 @@
+<phpunit
+        bootstrap="bootstrap.php"
+        backupGlobals="false"
+        colors="true"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        >
+    <testsuites>
+        <!-- Custom tests created by the plugin or theme programmers -->
+        <testsuite>
+            <directory prefix="test-" suffix=".php">./custom_tests</directory>
+        </testsuite>
         <!-- Wordpress Tests (created for testing wordpress core, we only run some of these for sanity check) -->
         <testsuite>
             <file>replace/cron.php</file>
             <file>replace/post.php</file>
             <file>replace/query.php</file>
             <file>replace/shortcode.php</file>
-            <!--file>replace/taxonomy.php</file-->
+            <file>replace/taxonomy.php</file>
             <file>replace/term.php</file>
             <file>replace/user.php</file>
         </testsuite>
+    </testsuites>
+</phpunit>
