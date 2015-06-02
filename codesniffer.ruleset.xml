@@ -8,6 +8,10 @@
 
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
+		<!-- Added after wordpress-docs put into standards -->
+		<exclude name="Squiz.Commenting" />
+		<exclude name="Generic.Commenting" />
+		
 		<exclude name="WordPress.XSS.EscapeOutput" />
 		<exclude name="WordPress.WhiteSpace.ScopeIndent.Incorrect" />
 		<!-- Added for Smartphone team requirements -->
