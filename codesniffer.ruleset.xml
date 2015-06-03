@@ -12,8 +12,9 @@
 		<exclude name="WordPress.WhiteSpace.ScopeIndent.Incorrect" />
 		<!-- Added for Smartphone team requirements -->
 		<exclude name="WordPress.Variables.GlobalVariables" />
+		<!-- Added after wordpress-docs put into standards -->
+		<exclude name="Squiz.Commenting" />
+		<exclude name="Generic.Commenting" />
 	</rule>
-	<!-- Added after wordpress-docs put into standards -->
-	<exclude ref="WordPress-Docs" />
-	
+
 </ruleset>
