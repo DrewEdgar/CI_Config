@@ -1,3 +1,8 @@
+V 0.0.4 June 3, 2015
+============================
+* Updated Wordpress version for testing from 4.1.1 to 4.2.2
+* Added WordPress-Docs to exclusion list. 
+
 V 0.0.3 March 26, 2015
 ============================
 * Added config file for eslint (.eslintrc)
