@@ -1,7 +1,8 @@
 V 0.0.4 June 3, 2015
 ============================
 * Updated Wordpress version for testing from 4.1.1 to 4.2.2
-* Added WordPress-Docs to exclusion list. 
+* Added WordPress-Docs to exclusion list.
+* Removed Taxonomy tests as they are broken in 4.2.2  (again....)
 
 V 0.0.3 March 26, 2015
 ============================
