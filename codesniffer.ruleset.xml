@@ -8,12 +8,12 @@
 
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
-		<!-- Added after wordpress-docs put into standards -->
-		<exclude ref="WordPress-Docs" />
-
 		<exclude name="WordPress.XSS.EscapeOutput" />
 		<exclude name="WordPress.WhiteSpace.ScopeIndent.Incorrect" />
 		<!-- Added for Smartphone team requirements -->
 		<exclude name="WordPress.Variables.GlobalVariables" />
 	</rule>
+	<!-- Added after wordpress-docs put into standards -->
+	<exclude ref="WordPress-Docs" />
+	
 </ruleset>
