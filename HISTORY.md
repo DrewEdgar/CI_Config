@@ -1,3 +1,15 @@
+V 1.0.0 Feb 12, 2016
+============================
+* Removing wordpress_latest.sh as this would not work with new installers anyway.
+* Modified exit status of the run script to match previous implementation.
+* Bump version number to 1.0.0 release, no longer just beta!
+
+V 0.0.6 Feb 3, 2016
+============================
+* Added versions.cfg
+* Deprecated: wordpress_latest.sh date to be removed yet determined
+* Set up script to take advantage of Travis-ci cache and prevent re-install locally if not required.
+
 V 0.0.5 Aug 6, 2015
 ============================
 * Updated Codesniffer rules to no longer exclude XSS Checks
