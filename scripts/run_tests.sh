@@ -52,16 +52,16 @@ source /tmp/ci_config/versions.cfg
 # ESLint - Javascript lint tests
 #   Files can be ignored by adding to the .eslintignore file, please see the documentation
 #   provided here: http://eslint.org/docs/user-guide/command-line-interface
-{
-	$(npm bin)/eslint -f compact ./
-	ESLINT_OUT=$?
-	if [[ $ESLINT_OUT == 0 ]]; then
-		echo -ne "${GREEN}The command \"$(npm bin)/eslint -f compact ./\" exited with ${ESLINT_OUT}.${NC}\n\n"
-	else
-		echo -ne "${RED}The command \"$(npm bin)/eslint -f compact ./\" exited with ${ESLINT_OUT}.${NC}\n\n"
-		RESULT=1
-	fi
-}
+# {
+#	$(npm bin)/eslint -f compact ./
+#	ESLINT_OUT=$?
+#	if [[ $ESLINT_OUT == 0 ]]; then
+#		echo -ne "${GREEN}The command \"$(npm bin)/eslint -f compact ./\" exited with ${ESLINT_OUT}.${NC}\n\n"
+#	else
+#		echo -ne "${RED}The command \"$(npm bin)/eslint -f compact ./\" exited with ${ESLINT_OUT}.${NC}\n\n"
+#		RESULT=1
+#	fi
+# }
 
 # CSSLint - CSS line tests
 #   Rules applied come from CI_config, the repo may add files to an exclusion list
