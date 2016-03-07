@@ -27,24 +27,24 @@ source /tmp/ci_config/versions.cfg
 
 # PHP syntax error checks
 {
-	find ../ \( -name '*.php' \) -exec php -lf {} \;
+	find ./ \( -name '*.php' \) -exec php -lf {} \;
 	SYNTAX_OUT=$?
 	if [[ $SYNTAX_OUT == 0 ]]; then
-		echo -ne "${GREEN}The command \"find ../ \\( -name '*.php' \\) -exec php -lf {} \\;\" exited with ${SYNTAX_OUT}.${NC}\n\n"
+		echo -ne "${GREEN}The command \"find ./ \\( -name '*.php' \\) -exec php -lf {} \\;\" exited with ${SYNTAX_OUT}.${NC}\n\n"
 	else
-		echo -ne "${RED}The command \"find ../ \\( -name '*.php' \\) -exec php -lf {} \\;\" exited with ${SYNTAX_OUT}.${NC}\n\n"
+		echo -ne "${RED}The command \"find ./ \\( -name '*.php' \\) -exec php -lf {} \\;\" exited with ${SYNTAX_OUT}.${NC}\n\n"
 		RESULT=1
 	fi
 }
 
 # Wordpress Coding Standards
 {
-	$INSTALL_PATH/php-codesniffer/scripts/phpcs -p -s -v -n ../ --standard=./tests/codesniffer.ruleset.xml --extensions=php
+	$INSTALL_PATH/php-codesniffer/scripts/phpcs -p -s -v -n ./ --standard=./tests/codesniffer.ruleset.xml --extensions=php
 	PHPCS_OUT=$?
 	if [[ $PHPCS_OUT == 0 ]]; then
-		echo -ne "${GREEN}The command \"$INSTALL_PATH/php-codesniffer/scripts/phpcs -p -s -v -n ../ --standard=./tests/codesniffer.ruleset.xml --extensions=php\" exited with ${PHPCS_OUT}.${NC}\n\n"
+		echo -ne "${GREEN}The command \"$INSTALL_PATH/php-codesniffer/scripts/phpcs -p -s -v -n ./ --standard=./tests/codesniffer.ruleset.xml --extensions=php\" exited with ${PHPCS_OUT}.${NC}\n\n"
 	else
-		echo -ne "${RED}The command \"$INSTALL_PATH/php-codesniffer/scripts/phpcs -p -s -v -n ../ --standard=./tests/codesniffer.ruleset.xml --extensions=php\" exited with ${PHPCS_OUT}.${NC}\n\n"
+		echo -ne "${RED}The command \"$INSTALL_PATH/php-codesniffer/scripts/phpcs -p -s -v -n ./ --standard=./tests/codesniffer.ruleset.xml --extensions=php\" exited with ${PHPCS_OUT}.${NC}\n\n"
 		RESULT=1
 	fi
 }
