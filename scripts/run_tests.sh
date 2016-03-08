@@ -90,7 +90,7 @@ source /tmp/ci_config/versions.cfg
 		echo -ne "${YELLOW}Several lines (${GREP_OUT}) are ignoring coding standards.${NC}\n\n"
 	else
 		echo -ne "${RED}Failure - Too many coding standards ignored (${GREP_OUT}), code must be inspected for @codingStandardsIgnoreLine comments and manually given a pass by Integration.${NC}\n\n"
-		$RESULT=1
+		RESULT=1
 	fi
 }
 
