@@ -1,17 +1,140 @@
 <?xml version="1.0"?>
-<ruleset name="CI-Theme WordPress Theme Coding Standards Configuration">
-	<!-- Set a description for this ruleset. -->
-	<description>A custom set of code standard rules</description>
+<ruleset name="CI Coding Standards Configuration">
+
+	<description>Postmedia's Accepted Coding Standard Rules</description>
 
 	<!-- Exclude the test directories -->
-    <exclude-pattern>tests/*</exclude-pattern>
+	<exclude-pattern>tests/*</exclude-pattern>
 
-	<!-- Include the WordPress ruleset, with exclusions. -->
-	<rule ref="WordPress">
-		<exclude name="WordPress.WhiteSpace.ScopeIndent.Incorrect" />
-		<!-- Added after wordpress-docs put into standards -->
-		<exclude name="Squiz.Commenting" />
-		<exclude name="Generic.Commenting" />
+	<!-- global arguments used by sniffs -->
+	<arg name="tab-width" value="4" />
+
+	<!-- Postmedia Standards -->
+	<rule ref="Postmedia.Files.LowercasedFilename" />
+	<rule ref="Postmedia.XSS.EscapeOutput">
+		<properties>
+			<property name="customEscapingFunctions" type="array" value="Postmedia\Web\Utilities::esc_layouts,Utilities::esc_layouts,esc_layouts" />
+			<property name="customSanitizingFunctions" type="array" value="Postmedia\Web\Utilities::esc_layouts,Utilities::esc_layouts" />
+		</properties>
 	</rule>
+
+
+	<!-- PEAR Standards -->
+	<rule ref="PEAR.Functions.FunctionCallSignature">
+		<properties>
+			<property name="requiredSpacesAfterOpen" value="1" />
+			<property name="requiredSpacesBeforeClose" value="1" />
+		</properties>
+	</rule>
+	<rule ref="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket">
+		<severity>0</severity>
+	</rule>
+	<rule ref="PEAR.Functions.FunctionCallSignature.CloseBracketLine">
+		<severity>0</severity>
+	</rule>
+
+
+
+
+	<!-- Generic Standards -->
+	<rule ref="Generic.CodeAnalysis.EmptyStatement" />
+	<rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop" />
+	<rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall" />
+	<rule ref="Generic.CodeAnalysis.JumbledIncrementer" />
+	<rule ref="Generic.CodeAnalysis.UnconditionalIfStatement" />
+	<rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier" />
+	<rule ref="Generic.CodeAnalysis.UselessOverridingMethod" />
+	<rule ref="Generic.Classes.DuplicateClassName" />
+	<rule ref="Generic.ControlStructures.InlineControlStructure" />
+	<rule ref="Generic.Files.ByteOrderMark" />
+	<rule ref="Generic.Files.EndFileNewline" />
+	<rule ref="Generic.Files.LineEndings">
+		<properties>
+			<property name="eolChar" value="\n" />
+		</properties>
+	</rule>
+	<!--rule ref="Generic.Files.LowercasedFilename" /-->
+	<rule ref="Generic.Formatting.DisallowMultipleStatements" />
+	<rule ref="Generic.Formatting.SpaceAfterCast" />
+	<rule ref="Generic.Functions.CallTimePassByReference" />
+	<rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" />
+	<rule ref="Generic.PHP.DeprecatedFunctions" />
+	<rule ref="Generic.PHP.DisallowShortOpenTag" />
+	<rule ref="Generic.PHP.ForbiddenFunctions" />
+	<rule ref="Generic.PHP.LowerCaseConstant" />
+	<rule ref="Generic.PHP.LowerCaseKeyword" />
+	<rule ref="Generic.PHP.NoSilencedErrors" />
+	<rule ref="Generic.Strings.UnnecessaryStringConcat" />
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent" />
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="indent" value="4" />
+			<property name="tabIndent" value="true" />
+		</properties>
+	</rule>
+
+
+
+
+	<!-- Squiz Standards -->
+	<rule ref="Squiz.ControlStructures.ControlSignature" />
+	<rule ref="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace">
+		<severity>0</severity>
+	</rule>
+	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
+		<properties>
+			<property name="equalsSpacing" value="1" />
+			<property name="requiredSpacesAfterOpen" value="1" />
+			<property name="requiredSpacesBeforeClose" value="1" />
+		</properties>
+	</rule>
+	<rule ref="Squiz.PHP.CommentedOutCode" />
+	<rule ref="Squiz.Strings.DoubleQuoteUsage"/>
+	<rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar">
+		<severity>0</severity>
+	</rule>
+	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace" />
+
+
+
+
+	<!-- WordPress Standards -->
+	<rule ref="WordPress.Arrays.ArrayAssignmentRestrictions" />
+	<rule ref="WordPress.Arrays.ArrayDeclaration">
+		<exclude name="WordPress.Arrays.ArrayDeclaration.SingleLineNotAllowed" />
+	</rule>
+	<rule ref="WordPress.Arrays.ArrayKeySpacingRestrictions" />
+	<rule ref="WordPress.Classes.ValidClassName" />
+	<rule ref="WordPress.CSRF.NonceVerification" />
+	<rule ref="WordPress.Files.FileName" />
+	<rule ref="WordPress.Functions.FunctionRestrictions" />
+	<rule ref="WordPress.NamingConventions.ValidVariableName" />
+	<rule ref="WordPress.NamingConventions.ValidFunctionName" />
+	<rule ref="WordPress.PHP.DiscouragedFunctions" />
+	<rule ref="WordPress.PHP.StrictComparisons" />
+	<rule ref="WordPress.PHP.StrictInArray" />
+	<rule ref="WordPress.PHP.YodaConditions" />
+	<rule ref="WordPress.Variables.GlobalVariables" />
+	<rule ref="WordPress.Variables.VariableRestrictions" />
+	<rule ref="WordPress.VIP.AdminBarRemoval" />
+	<rule ref="WordPress.VIP.CronInterval" />
+	<rule ref="WordPress.VIP.DirectDatabaseQuery" />
+	<rule ref="WordPress.VIP.FileSystemWritesDisallow" />
+	<rule ref="WordPress.VIP.OrderByRand" />
+	<rule ref="WordPress.VIP.PluginMenuSlug" />
+	<rule ref="WordPress.VIP.PostsPerPage" />
+	<rule ref="WordPress.VIP.RestrictedFunctions" />
+	<rule ref="WordPress.VIP.RestrictedVariables" />
+	<rule ref="WordPress.VIP.SessionFunctionsUsage" />
+	<rule ref="WordPress.VIP.SessionVariableUsage" />
+	<rule ref="WordPress.VIP.SlowDBQuery" />
+	<rule ref="WordPress.VIP.SuperGlobalInputUsage" />
+	<rule ref="WordPress.VIP.TimezoneChange" />
+	<rule ref="WordPress.VIP.ValidatedSanitizedInput" />
+	<rule ref="WordPress.WhiteSpace.ControlStructureSpacing" />
+	<rule ref="WordPress.WhiteSpace.OperatorSpacing" />
+	<rule ref="WordPress.WhiteSpace.CastStructureSpacing" />
+	<rule ref="WordPress.WP.EnqueuedResources" />
+	<rule ref="WordPress.WP.PreparedSQL" />
 
 </ruleset>

@@ -1,3 +1,10 @@
+V 1.0.1 March 11, 2016
+============================
+* Added Postmedia coding standards for phpcs
+* Postmedia.Files.LowercasedFilename Sniff added, accepts uppercase when file is a class
+* Postmedia.XSS.EscapeOutput Sniff added, handles namespaced functions
+* TODO: We are going to move the install script into the scripts folder, so minor changes (new coding standards) are not hacked into the process
+
 V 1.0.0 Feb 12, 2016
 ============================
 * Removing wordpress_latest.sh as this would not work with new installers anyway.

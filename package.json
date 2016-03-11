@@ -1,7 +1,7 @@
 {
 	"name": "CI_Config",
 	"description": "For universal control over our wordpress ci configurations",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"homepage": "https://github.com/Postmedia-Digital/CI_Config",
 	"author": "Keith Benedict <kbenedict@postmedia.com>",
 	"contributors": [
