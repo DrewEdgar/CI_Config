@@ -11,6 +11,14 @@ RESULT=0
 # Lets get env vars and switch path
 source /tmp/ci_config/versions.cfg
 
+# TODO: Make this part of the installation script, once it is moved to this project
+# Temporary, we want this in the installer ideally, with versioning
+cp -r /tmp/ci_config/postmedia-coding-standards $INSTALL_PATH/
+echo -ne "${CYAN}Setting paths to sniffs, the following are the active sniffs being used by phpcs:${NC}\n\n"
+$INSTALL_PATH/php-codesniffer/scripts/phpcs --config-set installed_paths $INSTALL_PATH/wordpress-coding-standards/,$INSTALL_PATH/postmedia-coding-standards/
+$INSTALL_PATH/php-codesniffer/scripts/phpcs -e --standard=./tests/codesniffer.ruleset.xml --extensions=php
+echo -ne "\n\n"
+
 # PHPUNIT Testing
 {
 	# What if we made these calls seperate.....
