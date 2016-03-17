@@ -1,3 +1,7 @@
+V 1.0.2 March 17, 2016
+============================
+* Postmedia.Files.ClassFilename Sniff added, checks for ClassFilenameNotCamelCaps
+
 V 1.0.1 March 11, 2016
 ============================
 * Added Postmedia coding standards for phpcs

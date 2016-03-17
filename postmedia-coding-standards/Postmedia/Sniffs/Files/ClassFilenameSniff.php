@@ -29,7 +29,7 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 	 * @return array
 	 */
 	public function register() {
-		return array( T_OPEN_TAG );
+		return array( T_CLASS );
 	} //end register()
 
 
@@ -46,25 +46,26 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 	{
 
 		$filename = $phpcsFile->getFileName();
-		$basename = basename( $filename );
 		$pathparts = pathinfo( $filename );
-		$classname = ucwords( $pathparts['filename'] );
+		$basename = $pathparts['filename'];
 
-		if( exec( 'grep ' . escapeshellarg( '^class[[:space:]]' ) . ' ' . $filename ) ) {
-			// this is a class, the filename needs to match, lets test that it does
-			if( exec( 'grep ' . escapeshellarg( 'class ' . $classname . '[[:space:]]' ) . ' ' . $filename ) && $classname == $basename ) {
-				// this is a class, the filename needs to match, since it does were okay
-				return;
-			}
-			else {
-				$expected	= $classname . '.php';
-				$filename	= basename( $filename );
-				$error		= 'Filename "' . $filename . '" found for class file; use ' . $expected . ' instead';
-				$phpcsFile->addError($error, $stackPtr, 'ClassFilesUseCamelCaps');
-			}
+		$tokens = $phpcsFile->getTokens();
+
+		// Determine the name of the class or interface. Note that we cannot
+		// simply look for the first T_STRING because a class name
+		// starting with the number will be multiple tokens.
+		$opener		= $tokens[$stackPtr]['scope_opener'];
+		$nameStart	= $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), $opener, true);
+		$nameEnd	= $phpcsFile->findNext(T_WHITESPACE, $nameStart, $opener);
+		$name		= trim($phpcsFile->getTokensAsString($nameStart, ($nameEnd - $nameStart)));
+
+		if ( $name != $basename ) {
+			$expected = $basename . 'php';
+			$error = 'Class filename is not using Camel Caps';
+			$phpcsFile->addError( $error, $stackPtr, 'ClassFilenameNotCamelCaps' );
 		}
 
-		return $phpcsFile->numTokens + 1;
+		return;
 
 	} //end process()
 
