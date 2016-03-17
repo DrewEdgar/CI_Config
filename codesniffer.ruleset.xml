@@ -10,6 +10,7 @@
 	<arg name="tab-width" value="4" />
 
 	<!-- Postmedia Standards -->
+	<rule ref="Postmedia.Files.ClassFilename" />
 	<rule ref="Postmedia.Files.LowercasedFilename" />
 	<rule ref="Postmedia.XSS.EscapeOutput">
 		<properties>
