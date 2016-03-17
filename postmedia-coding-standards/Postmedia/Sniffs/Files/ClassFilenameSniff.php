@@ -59,9 +59,25 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 		$nameEnd	= $phpcsFile->findNext(T_WHITESPACE, $nameStart, $opener);
 		$name		= trim($phpcsFile->getTokensAsString($nameStart, ($nameEnd - $nameStart)));
 
+		// Check for more than one class per file.
+		exec( 'grep -Ri ' . escapeshellarg( '^class[[:space:]]' ) . ' ' . $filename . ' | wc -l | tr -d ' .escapeshellarg( '[[:space:]]' ), $output );
+		if ( 2 <= (int) $output[0] ) {
+			$error = '2 or more classes defined in file, expected 1';
+			$phpcsFile->addError( $error, $stackPtr, 'TooManyClasses' );
+			return;
+		}
+
 		if ( $name != $basename ) {
-			$expected = $basename . 'php';
-			$error = 'Class filename is not using Camel Caps';
+			$expected = ucfirst( $name . '.php' );
+			$error = 'Class filename "' . $pathparts['basename'] . '" does not match class name, expected "' . $expected . '"';
+			$phpcsFile->addError( $error, $stackPtr, 'ClassFilenameMustMatchClass' );
+			return;
+		}
+
+		$valid = PHP_CodeSniffer::isCamelCaps( $basename, true, true, false );
+		if ( ! $valid ) {
+			$expected = ucfirst( $basename . '.php' );
+			$error = 'Class filename "'. $pathparts['basename'] . '" is not in Camel Caps, expected "' . $expected . '"';
 			$phpcsFile->addError( $error, $stackPtr, 'ClassFilenameNotCamelCaps' );
 		}
 
