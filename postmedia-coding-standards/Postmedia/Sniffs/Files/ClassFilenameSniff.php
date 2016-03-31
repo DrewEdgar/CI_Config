@@ -48,6 +48,7 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 		$filename = $phpcsFile->getFileName();
 		$pathparts = pathinfo( $filename );
 		$basename = $pathparts['filename'];
+		$needles = array( '_', '-' );
 
 		$tokens = $phpcsFile->getTokens();
 
@@ -55,9 +56,9 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 		// simply look for the first T_STRING because a class name
 		// starting with the number will be multiple tokens.
 		$opener		= $tokens[$stackPtr]['scope_opener'];
-		$nameStart	= $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), $opener, true);
-		$nameEnd	= $phpcsFile->findNext(T_WHITESPACE, $nameStart, $opener);
-		$name		= trim($phpcsFile->getTokensAsString($nameStart, ($nameEnd - $nameStart)));
+		$nameStart	= $phpcsFile->findNext( T_WHITESPACE, ( $stackPtr + 1 ), $opener, true );
+		$nameEnd	= $phpcsFile->findNext( T_WHITESPACE, $nameStart, $opener );
+		$name		= ucfirst( str_replace( $needles, '', trim($phpcsFile->getTokensAsString( $nameStart, ($nameEnd - $nameStart) ) ) ) );
 
 		// Check for more than one class per file.
 		exec( 'grep -Ri ' . escapeshellarg( '^class[[:space:]]' ) . ' ' . $filename . ' | wc -l | tr -d ' .escapeshellarg( '[[:space:]]' ), $output );
@@ -68,7 +69,7 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 		}
 
 		if ( $name != $basename ) {
-			$expected = ucfirst( $name . '.php' );
+			$expected = $name . '.php';
 			$error = 'Class filename "' . $pathparts['basename'] . '" does not match class name, expected "' . $expected . '"';
 			$phpcsFile->addError( $error, $stackPtr, 'ClassFilenameMustMatchClass' );
 			return;
@@ -76,7 +77,7 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 
 		$valid = PHP_CodeSniffer::isCamelCaps( $basename, true, true, false );
 		if ( ! $valid ) {
-			$expected = ucfirst( $basename . '.php' );
+			$expected = ucfirst( str_replace( $needles, '', $basename ) . '.php' );
 			$error = 'Class filename "'. $pathparts['basename'] . '" is not in Camel Caps, expected "' . $expected . '"';
 			$phpcsFile->addError( $error, $stackPtr, 'ClassFilenameNotCamelCaps' );
 		}
