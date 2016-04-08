@@ -1,3 +1,7 @@
+V 1.0.3 April 8, 2016
+============================
+* Modified esc_layouts exception to escape_layouts in codesniffer.ruleset.xml
+
 V 1.0.2 March 17, 2016
 ============================
 * Postmedia.Files.ClassFilename Sniff added, checks for ClassFilenameNotCamelCaps
