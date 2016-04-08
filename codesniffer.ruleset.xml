@@ -14,8 +14,8 @@
 	<rule ref="Postmedia.Files.LowercasedFilename" />
 	<rule ref="Postmedia.XSS.EscapeOutput">
 		<properties>
-			<property name="customEscapingFunctions" type="array" value="Postmedia\Web\Utilities::escape_layouts,Utilities::escape_layouts" />
-			<property name="customSanitizingFunctions" type="array" value="Postmedia\Web\Utilities::escape_layouts,Utilities::escape_layouts" />
+			<property name="customEscapingFunctions" type="array" value="Postmedia\Web\Utilities::escaped_layouts,Utilities::escaped_layouts" />
+			<property name="customSanitizingFunctions" type="array" value="Postmedia\Web\Utilities::escaped_layouts,Utilities::escaped_layouts" />
 		</properties>
 	</rule>
 
