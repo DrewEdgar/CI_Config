@@ -44,7 +44,7 @@ echo -ne "\n\n"
 	{
 		echo -ne "Executing check on code coverage.....\n\n"
 		PHP_FUNCTIONS_COUNT="$(grep -Ri 'function' ./ --include='*.php' --exclude='*\tests*' | wc -l | tr -d '[[:space:]]')"
-		UNIT_TESTS_COUNT="$(grep -Ri 'function' ./tests --include='*.php' | wc -l | tr -d '[[:space:]]')"
+		UNIT_TESTS_COUNT="$(grep -Ri 'function test' ./tests/custom_tests --include='*.php' | wc -l | tr -d '[[:space:]]')"
 		FUNCTION_COVERAGE=$((UNIT_TESTS_COUNT*100/PHP_FUNCTIONS_COUNT))
 		if [[ $FUNCTION_COVERAGE -gt 80 ]]; then
 			echo -ne "${GREEN}Code coverage score of ${FUNCTION_COVERAGE} is good.${NC}\n\n"
