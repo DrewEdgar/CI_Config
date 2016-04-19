@@ -1,3 +1,7 @@
+V 1.0.4 April 19, 2016
+============================
+* Added checks for code coverage, prevents repos from passing by making one valid test case.
+
 V 1.0.3 April 8, 2016
 ============================
 * Modified esc_layouts exception to escape_layouts in codesniffer.ruleset.xml
