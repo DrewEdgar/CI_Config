@@ -1,3 +1,7 @@
+V 1.0.5 April 20, 2016
+============================
+* Corrected regex in code coverage
+
 V 1.0.4 April 19, 2016
 ============================
 * Added checks for code coverage, prevents repos from passing by making one valid test case.

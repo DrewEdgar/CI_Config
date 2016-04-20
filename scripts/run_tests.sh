@@ -43,9 +43,10 @@ echo -ne "\n\n"
 	# phpunit -c tests/phpunit_code_coverage.xml --coverage-text=~/report.txt ./
 	{
 		echo -ne "Executing check on code coverage.....\n\n"
-		PHP_FUNCTIONS_COUNT="$(grep -Ri 'function' ./ --include='*.php' --exclude='*\tests*' | wc -l | tr -d '[[:space:]]')"
+		PHP_FUNCTIONS_COUNT="$(grep -Ri '[[:space:]]function[[:space:]]' ./ --include='*.php' --exclude-dir='tests' | wc -l | tr -d '[[:space:]]')"
 		UNIT_TESTS_COUNT="$(grep -Ri 'function test' ./tests/custom_tests --include='*.php' | wc -l | tr -d '[[:space:]]')"
 		FUNCTION_COVERAGE=$((UNIT_TESTS_COUNT*100/PHP_FUNCTIONS_COUNT))
+		echo -ne "${CYAN}${PHP_FUNCTIONS_COUNT}/${UNIT_TESTS_COUNT}/${FUNCTION_COVERAGE}${NC}\n"
 		if [[ $FUNCTION_COVERAGE -gt 80 ]]; then
 			echo -ne "${GREEN}Code coverage score of ${FUNCTION_COVERAGE} is good.${NC}\n\n"
 		elif [[ $FUNCTION_COVERAGE -gt 60 ]]; then
