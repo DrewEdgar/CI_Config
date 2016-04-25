@@ -63,8 +63,8 @@ class Postmedia_Sniffs_Files_TraitFileNameSniff implements PHP_CodeSniffer_Sniff
 		// Check for more than one trait per file.
 		exec( 'grep -Ri ' . escapeshellarg( '^trait[[:space:]]' ) . ' ' . $filename . ' | wc -l | tr -d ' .escapeshellarg( '[[:space:]]' ), $output );
 		if ( 2 <= (int) $output[0] ) {
-			$error = '2 or more traites defined in file, expected 1';
-			$phpcsFile->addError( $error, $stackPtr, 'TooManyTraites' );
+			$error = '2 or more traits defined in file, expected 1';
+			$phpcsFile->addError( $error, $stackPtr, 'TooManyTraits' );
 			return;
 		}
 

@@ -14,7 +14,7 @@
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
 
-class Postmedia_Sniffs_Traites_ValidTraitNameSniff implements PHP_CodeSniffer_Sniff
+class Postmedia_Sniffs_Traits_ValidTraitNameSniff implements PHP_CodeSniffer_Sniff
 {
 
 
