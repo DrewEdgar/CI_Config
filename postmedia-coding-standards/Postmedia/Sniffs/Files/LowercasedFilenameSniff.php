@@ -55,8 +55,11 @@ class Postmedia_Sniffs_Files_LowercasedFilenameSniff implements PHP_CodeSniffer_
 
         $pathparts = pathinfo( $filename );
         $classname = $pathparts['filename'];
-        if( exec( 'grep ' . escapeshellarg( 'class ' . $classname . '[[:space:]]' ) . ' ' . $filename ) ) {
+        if ( exec( 'grep ' . escapeshellarg( 'class ' . $classname . '[[:space:]]' ) . ' ' . $filename ) ) {
             // this is a class, the filename needs to match, since it does were okay
+            return;
+        } elseif ( ( exec( 'grep ' . escapeshellarg( 'trait ' . $classname . '[[:space:]]' ) . ' ' . $filename ) ) {
+            // this is a trait, the filename needs to match, since it does were okay
             return;
         }
 
