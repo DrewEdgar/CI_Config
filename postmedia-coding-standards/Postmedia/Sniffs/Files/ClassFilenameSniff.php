@@ -70,7 +70,7 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 
 		if ( $name != $basename ) {
 			$expected = $name;
-			$error = 'Class filename "' . $pathparts['basename'] . '" does not match class name "'. $name . '", check the class name and filename are both in CamelCaps';
+			$error = 'Class filename "' . $pathparts['basename'] . '" does not match class name "'. $name . '", check the class name and filename are both in CamelCaps and match';
 			$phpcsFile->addError( $error, $stackPtr, 'ClassFilenameMustMatchClass' );
 			return;
 		}

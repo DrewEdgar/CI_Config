@@ -70,7 +70,7 @@ class Postmedia_Sniffs_Files_TraitFileNameSniff implements PHP_CodeSniffer_Sniff
 
 		if ( $name != $basename ) {
 			$expected = $name;
-			$error = 'Trait filename "' . $pathparts['basename'] . '" does not match trait name "'. $name . '", check the trait name and filename are both in CamelCaps';
+			$error = 'Trait filename "' . $pathparts['basename'] . '" does not match trait name "'. $name . '", check the trait name and filename are both in CamelCaps and match';
 			$phpcsFile->addError( $error, $stackPtr, 'TraitFilenameMustMatchTrait' );
 			return;
 		}
