@@ -11,7 +11,10 @@
 
 	<!-- Postmedia Standards -->
 	<rule ref="Postmedia.Files.ClassFilename" />
+	<rule ref="Postmedia.Files.TraitFilename" />
 	<rule ref="Postmedia.Files.LowercasedFilename" />
+	<rule ref="Postmedia.Classes.ValidClassName" />
+	<rule ref="Postmedia.Traits.ValidTraitName" />
 	<rule ref="Postmedia.XSS.EscapeOutput">
 		<properties>
 			<property name="customEscapingFunctions" type="array" value="Postmedia\Web\Utilities::escaped_layouts,Utilities::escaped_layouts" />

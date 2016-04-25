@@ -12,7 +12,7 @@
  */
 
 /**
- * Postmedia_Sniffs_Files_ClassFileNameSniff.
+ * Postmedia_Sniffs_Files_TraitFileNameSniff.
  *
  * Ensures filenames do not contain underscores
  *
@@ -20,7 +20,7 @@
  * @package		PHP_CodeSniffer
  * @author		Keith Benedict
  */
-class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
+class Postmedia_Sniffs_Files_TraitFileNameSniff implements PHP_CodeSniffer_Sniff
 {
 
 	 /**
@@ -29,7 +29,7 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 	 * @return array
 	 */
 	public function register() {
-		return array( T_CLASS );
+		return array( T_TRAIT );
 	} //end register()
 
 
@@ -52,7 +52,7 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 
 		$tokens = $phpcsFile->getTokens();
 
-		// Determine the name of the class or interface. Note that we cannot
+		// Determine the name of the trait. Note that we cannot
 		// simply look for the first T_STRING because a class name
 		// starting with the number will be multiple tokens.
 		$opener		= $tokens[$stackPtr]['scope_opener'];
@@ -60,26 +60,26 @@ class Postmedia_Sniffs_Files_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
 		$nameEnd	= $phpcsFile->findNext( T_WHITESPACE, $nameStart, $opener );
 		$name		= trim($phpcsFile->getTokensAsString( $nameStart, ($nameEnd - $nameStart) ) );
 
-		// Check for more than one class per file.
-		exec( 'grep -Ri ' . escapeshellarg( '^class[[:space:]]' ) . ' ' . $filename . ' | wc -l | tr -d ' .escapeshellarg( '[[:space:]]' ), $output );
+		// Check for more than one trait per file.
+		exec( 'grep -Ri ' . escapeshellarg( '^trait[[:space:]]' ) . ' ' . $filename . ' | wc -l | tr -d ' .escapeshellarg( '[[:space:]]' ), $output );
 		if ( 2 <= (int) $output[0] ) {
-			$error = '2 or more classes defined in file, expected 1';
-			$phpcsFile->addError( $error, $stackPtr, 'TooManyClasses' );
+			$error = '2 or more traits defined in file, expected 1';
+			$phpcsFile->addError( $error, $stackPtr, 'TooManyTraits' );
 			return;
 		}
 
 		if ( $name != $basename ) {
 			$expected = $name;
-			$error = 'Class filename "' . $pathparts['basename'] . '" does not match class name "'. $name . '", check the class name and filename are both in CamelCaps and match';
-			$phpcsFile->addError( $error, $stackPtr, 'ClassFilenameMustMatchClass' );
+			$error = 'Trait filename "' . $pathparts['basename'] . '" does not match trait name "'. $name . '", check the trait name and filename are both in CamelCaps and match';
+			$phpcsFile->addError( $error, $stackPtr, 'TraitFilenameMustMatchTrait' );
 			return;
 		}
 
 		$valid = PHP_CodeSniffer::isCamelCaps( $basename, true, true, false );
 		if ( ! $valid ) {
 			$expected = ucfirst( str_replace( $needles, '', $basename ) . '.php' );
-			$error = 'Class filename "'. $pathparts['basename'] . '" is not in Camel Caps, expected at least "' . $expected . '", check class name to confirm';
-			$phpcsFile->addError( $error, $stackPtr, 'ClassFilenameNotCamelCaps' );
+			$error = 'Trait filename "'. $pathparts['basename'] . '" is not in Camel Caps, expected at least "' . $expected . '", check trait name to confirm';
+			$phpcsFile->addError( $error, $stackPtr, 'TraitFilenameNotCamelCaps' );
 		}
 
 		return;
