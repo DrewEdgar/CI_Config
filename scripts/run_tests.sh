@@ -43,7 +43,7 @@ echo -ne "\n\n"
 	# phpunit -c tests/phpunit_code_coverage.xml --coverage-text=~/report.txt ./
 	{
 		echo -ne "Executing check on code coverage.....\n\n"
-		PHP_FUNCTIONS_COUNT="$(grep -Ri '^[[:space:]]*function[[:space:]]' ./ --include='*.php' --exclude-dir='tests' | wc -l | tr -d '[[:space:]]')"
+		PHP_FUNCTIONS_COUNT="$(grep -Ri '^[[:space:]]*[private|public]*[[:space:]]*function[[:space:]]' ./ --include='*.php' --exclude-dir='tests' | wc -l | tr -d '[[:space:]]')"
 		UNIT_TESTS_COUNT="$(grep -Ri '^[[:space:]]*function test' ./tests/custom_tests --include='*.php' | wc -l | tr -d '[[:space:]]')"
 		if [[ $PHP_FUNCTIONS_COUNT -gt 0 ]]; then
 			if [[ $UNIT_TESTS_COUNT -gt 0 ]]; then
