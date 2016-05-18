@@ -82,7 +82,7 @@ echo -ne "\n\n"
 
 # Wordpress Coding Standards
 {
-	$INSTALL_PATH/php-codesniffer/scripts/phpcs -p -s -v -n ./ --standard=./tests/codesniffer.ruleset.xml --extensions=php
+	$INSTALL_PATH/php-codesniffer/scripts/phpcs -p -s -vv -n ./ --standard=./tests/codesniffer.ruleset.xml --extensions=php
 	PHPCS_OUT=$?
 	if [[ $PHPCS_OUT == 0 ]]; then
 		echo -ne "${GREEN}The command \"$INSTALL_PATH/php-codesniffer/scripts/phpcs -p -s -v -n ./ --standard=./tests/codesniffer.ruleset.xml --extensions=php\" exited with ${PHPCS_OUT}.${NC}\n\n"
