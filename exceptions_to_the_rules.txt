@@ -1,0 +1,11 @@
+# format is type:Repo (Case Matters!)
+# types include
+#	unittest	- unit tests (execution)
+#	coverage	- code coverage (having unit tests)
+#	lints		- css and js linting
+#	standards	- coding standard checks
+#	overrides	- use of @codingstandardsignore
+
+# Example
+coverage:Postmedia-Digital/repo-name
+overrides:Postmedia-Digital/repo-name
