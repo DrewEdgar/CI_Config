@@ -1,3 +1,7 @@
+V 1.0.6 July 13, 2016
+============================
+* Added the ability to add exceptions so repositories can now break the rules. Done for NP
+
 V 1.0.5 April 20, 2016
 ============================
 * Corrected regex in code coverage
