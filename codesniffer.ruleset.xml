@@ -67,7 +67,11 @@
 	<rule ref="Generic.PHP.ForbiddenFunctions" />
 	<rule ref="Generic.PHP.LowerCaseConstant" />
 	<rule ref="Generic.PHP.LowerCaseKeyword" />
-	<rule ref="Generic.PHP.NoSilencedErrors" />
+	<rule ref="Generic.PHP.NoSilencedErrors">
+		<properties>
+			<property name="error" value="true" />
+		</properties>
+	</rule>
 	<rule ref="Generic.Strings.UnnecessaryStringConcat" />
 	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent" />
 	<rule ref="Generic.WhiteSpace.ScopeIndent">
@@ -114,7 +118,11 @@
 	<rule ref="WordPress.Functions.FunctionRestrictions" />
 	<rule ref="WordPress.NamingConventions.ValidVariableName" />
 	<rule ref="WordPress.NamingConventions.ValidFunctionName" />
-	<rule ref="WordPress.PHP.DiscouragedFunctions" />
+	<rule ref="WordPress.PHP.DiscouragedFunctions">
+		<properties>
+			<property name="error" value="true" />
+		</properties>
+	</rule>
 	<rule ref="WordPress.PHP.StrictComparisons" />
 	<rule ref="WordPress.PHP.StrictInArray" />
 	<rule ref="WordPress.PHP.YodaConditions" />
