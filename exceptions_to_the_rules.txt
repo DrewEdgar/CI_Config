@@ -7,8 +7,8 @@
 #	overrides	- use of @codingstandardsignore
 
 # theshire
-unittest:Postmedia-Digital/theshire
-coverage:Postmedia-Digital/theshire
-lints:Postmedia-Digital/theshire
-standards:Postmedia-Digital/theshire
-overrides:Postmedia-Digital/theshire
+#unittest:Postmedia-Digital/theshire
+#coverage:Postmedia-Digital/theshire
+#lints:Postmedia-Digital/theshire
+#standards:Postmedia-Digital/theshire
+#overrides:Postmedia-Digital/theshire
