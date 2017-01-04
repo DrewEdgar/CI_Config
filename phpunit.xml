@@ -16,7 +16,7 @@
             <file>replace/cron.php</file>
             <file>replace/post.php</file>
             <file>replace/query.php</file>
-            <file>replace/shortcode.php</file>
+            <!--<file>replace/shortcode.php</file-->
             <!--file>replace/taxonomy.php</file--> <!-- Version 4.2.2 is broken here again -->
             <file>replace/term.php</file>
             <file>replace/user.php</file>
