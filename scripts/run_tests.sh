@@ -66,7 +66,7 @@ done
 	if [[ $IGNORE_UNITTEST == "false" ]]
 	then
 		echo -ne "${GREEN} Running PHPUnit Tests.....${NC}\n\n"
-		phpunit -c tests/phpunit.xml --report-useless-tests --disallow-test-output
+		phpunit -c tests/phpunit.xml --disallow-test-output
 
 		PHPUNIT_OUT=$?
 		if [[ $PHPUNIT_OUT == 0 ]]; then
