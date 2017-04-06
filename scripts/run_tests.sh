@@ -193,13 +193,15 @@ fi
 	if [[ $IGNORE_OVERRIDES == "false" ]]
 	then
 		echo -ne "${GREEN}Checking for overrides....${NC}\n\n"
-		GREP_OUT="$(grep -Ri '@codingStandardsIgnoreLine' ./* | wc -l | tr -d '[[:space:]]')"
-		if [[ $GREP_OUT -eq 0 ]]; then
+		GREP_ALL="$(grep -Ri '@codingStandardsIgnoreLine' ./* | wc -l | tr -d '[[:space:]]')"
+		GREP_TEST="$(grep -Ri '@codingStandardsIgnoreLine' ./* | wc -l | tr -d '[[:space:]]')"
+		IGNORED_STANDARDS=$((GREP_ALL-GREP_TEST))
+		if [[ $IGNORED_STANDARDS -eq 0 ]]; then
 			echo -ne "${GREEN}Check for coding standards ignore passed.${NC}\n\n"
-		elif [[ $GREP_OUT -lt 6 ]]; then
-			echo -ne "${YELLOW}Several lines (${GREP_OUT}) are ignoring coding standards.${NC}\n\n"
+		elif [[ $IGNORED_STANDARDS -lt 6 ]]; then
+			echo -ne "${YELLOW}Several lines (${IGNORED_STANDARDS}) are ignoring coding standards.${NC}\n\n"
 		else
-			echo -ne "${RED}Failure - Too many coding standards ignored (${GREP_OUT}), code must be inspected for @codingStandardsIgnoreLine comments and manually given a pass by Integration.${NC}\n\n"
+			echo -ne "${RED}Failure - Too many coding standards ignored (${IGNORED_STANDARDS}), code must be inspected for @codingStandardsIgnoreLine comments and manually given a pass by Integration.${NC}\n\n"
 			RESULT=1
 		fi
 	else
