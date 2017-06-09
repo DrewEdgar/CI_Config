@@ -66,7 +66,7 @@ done
 	if [[ $IGNORE_UNITTEST == "false" ]]
 	then
 		echo -ne "${GREEN} Running PHPUnit Tests.....${NC}\n\n"
-		phpunit -c tests/phpunit.xml --disallow-test-output --log-junit tests/results.xml
+		/usr/local/bin/phpunit -c tests/phpunit.xml --disallow-test-output --log-junit tests/results.xml
 
 		PHPUNIT_OUT=$?
 		if [[ $PHPUNIT_OUT == 0 ]]; then
@@ -174,7 +174,7 @@ then
 		#      csslint --exclude-list=thirdparty.css,tests/
 		#   This would ignore the thirdparty.css file and any css files under the tests path
 	{
-		$(npm bin)/csslint --format=compact --quiet ./
+		"$(npm bin)"/csslint --format=compact --quiet ./
 		CSSLINT_OUT=$?
 		if [[ $CSSLINT_OUT == 0 ]]; then
 			echo -ne "${GREEN}The command \"$(npm bin)/csslint --format=compact --quiet ./\" exited with ${CSSLINT_OUT}.${NC}\n\n"
